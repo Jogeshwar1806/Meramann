@@ -6,6 +6,13 @@
     <title>ALL POSTS | MERAMANN</title>
 </head>
 <body>
-    
+    <h1>All Posts</h1>
+    <%for (let i = 0;i<result.length;i++){%>
+        <%=result[i].username;%> <br>
+        <%=result[i].post;%>
+        <br>
+        <hr>
+
+    <%}%>
 </body>
 </html>

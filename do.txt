@@ -1,0 +1,56 @@
+pages
+    {   1. login page
+        2. home page
+        3. search page
+        4. Create post page
+        5. profile page
+    }
+1. login page
+    {
+        1. login 
+        {
+            username
+            password
+            forgot password("enter the email for varification")
+        }
+        2. register
+        {
+            username
+            email
+            password
+            (captcha additional)
+        }
+    }
+2. home page
+    {
+        1. layouts
+        {
+            1. 4 buttons to redirect ' home ", " search " ," create post "," profile "
+        }
+        2. home layout 
+        {
+            1. scroll animation 
+            2. posts (new to old)
+        }
+    }
+3. search page
+    {
+        1. search bar
+        2. search button
+        3. Recomendation
+    }
+4. create post page
+    {
+        1. create post
+    }
+5. profile page
+    {
+        1. about profile page
+        2. username
+        3. likes (advance)
+        4. posts
+        5. setting
+        6. much more things
+    }
+6. add genre (give recomendation in search with respect to genre)
+7. Much more things (additionally)

@@ -34,34 +34,33 @@ app.get("/login", (req, res) => {
 });
 
 //sign-in in website
-app.post("/signin",(req,res)=>{
-  let {email,password} = req.body;
+app.post("/signin", (req, res) => {
+  let { email, password } = req.body;
   let q = `SELECT password from posts where email="${email}";`;
   try {
-
-    connection.query(q,(err,result)=>{
+    connection.query(q, (err, result) => {
       let pass = result[0].password;
-      if(pass==password){
+      if (pass == password) {
         res.redirect("/posts");
       }
-      if(err) throw err;
+      if (err) throw err;
     });
   } catch (err) {
     console.log(err);
   }
-})
+});
 
 //sign-up in database
 app.post("/signup", (req, res) => {
-  let {username,email,password} = req.body;
-  console.log(faker.string.uuid(),username,email,password);
+  let { username, email, password } = req.body;
+  console.log(faker.string.uuid(), username, email, password);
   let q = `Insert into posts (id,username,email,password) values ("${faker.string.uuid()}","${username}","${email}","${password}");`;
   try {
-    connection.query(q,(err,result)=>{
+    connection.query(q, (err, result) => {
       console.log(result);
-      if(err) throw err;
+      if (err) throw err;
       res.redirect("/posts");
-    })
+    });
   } catch (err) {
     console.log(err);
   }
@@ -74,22 +73,44 @@ app.get("/posts", (req, res) => {
     connection.query(q, (err, result) => {
       console.log(result);
       console.log(faker.string.uuid());
-      res.render("posts.ejs",{result});
-      if(err) throw err;
+      res.render("posts.ejs", { result });
+      if (err) throw err;
     });
-  } catch (err){
+  } catch (err) {
     console.log(err);
   }
 });
 
 //forget password page
-app.get("/forget",(req,res)=>{
+app.get("/forget", (req, res) => {
   res.render("forget.ejs");
-})
+});
+
+//wronng password
+app.get("/wrongpass", (req, res) => {
+  res.send("Wrong Password");
+});
 
 //search page
 app.get("/search", (req, res) => {
   res.render("search.ejs");
+});
+
+//search get by username
+
+app.get("/post", (req, res) => {
+  let {username} = req.query;
+  console.log(username);
+  let q = `SELECT content FROM posts WHERE username = "${username}"`;
+  try{
+    connection.query(q,(err,result)=>{
+      console.log(result[0].content);
+      if(err) throw err;
+      res.send("noooo");
+    });
+  }catch(err){
+    console.log(err);
+  }
 });
 
 //listening port

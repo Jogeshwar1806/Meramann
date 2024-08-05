@@ -97,7 +97,6 @@ app.get("/search", (req, res) => {
 });
 
 //search get by username
-
 app.get("/post", (req, res) => {
   let {username} = req.query;
   console.log(username);

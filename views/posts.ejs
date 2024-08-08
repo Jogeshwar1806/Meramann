@@ -4,15 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALL POSTS | MERAMANN</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    /><link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/Styles/poststyles.css" />
+    <link rel="stylesheet" href="/Styles/userstyle.css" />
+
 </head>
 <body>
+    <div class="main_box">
+        <input type="checkbox" id="check" />
+        <div class="btn_one">
+          <label for="check">
+            <i class="fa-solid fa-bars"></i>
+          </label>
+        </div>
+  
+        <div class="sidebar_menu">
+          <div class="logo">
+            <a href="#">MERAMANN</a>
+          </div>
+  
+          <div class="btn_two">
+            <label for="check">
+              <i class="fa-solid fa-xmark"></i>
+            </label>
+          </div>
+  
+          <div class="menu">
+            <ul>
+              <li class="fixed-li">
+                <i class="fa-solid fa-image"></i>
+                <a href="/posts">POSTS</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <a href="/shortcuts">SHORTCUTS</a>
+              </li>
+              <li>
+                <i class="fa-solid fa-photo-film"></i>
+                <a href="/search">SEARCH</a>
+              </li>
+              <li>
+                <i class="fa-regular fa-heart"></i>
+                <a href="/liked">LIKED</a>
+              </li>
+              <li >
+                <form action="/login"><i class="fa-solid fa-user-plus"></i><button class="libtn">Sign-In</button></form>
+              </li>
+            </ul>
+          </div>
+  
+          <div class="social_media">
+            <ul>
+              <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
+              <a href="#"><i class="fa-brands fa-twitter"></i></a>
+              <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            </ul>
+          </div>
+        </div>
+      </div>
     <h1>All Posts</h1>
-    <%for (let i = 0;i<result.length;i++){%>
-        <%=result[i].username;%> <br>
-        <%=result[i].post;%>
-        <br>
-        <hr>
-
-    <%}%>
+    <%try{ for (let i = 0;i<result1.length;i++){%>
+      <div class="show">
+      <p><%=i+1%>. <%=result1[i].contents;%> </p><form action="/users/<%=result1[i].id%>"><button type="submit" class="btn btn-outline-light ">Show Posts</button></form>
+      </div>
+      <hr>
+  <%} }catch(err){
+    console.log(err);
+  }%>
 </body>
 </html>

@@ -1,0 +1,21 @@
+.show{
+    background: #0000;
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.show p{
+    font-weight: 700;
+}
+
+hr{
+    border-color: #000000dd;
+}
+
+
+.show button{
+    width: auto;
+}

@@ -1,1 +1,2 @@
 table for each user
+text.split(/\s/).join(''); for space remove

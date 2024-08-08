@@ -212,11 +212,18 @@ body {
   transform: translateX(200%);
 }
 
+
+
+
+
 /* sidebar */
+
+
+
+
 
 .main_box {
   background: url(bgimg1.png);
-  /* height: 100vh; */
   align-self: flex-start;
   background-size: cover;
 }

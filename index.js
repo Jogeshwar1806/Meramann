@@ -23,6 +23,8 @@ const connection = mysql.createConnection({
   password: "200306",
 });
 
+let inn = false;
+let profile = "";
 
 //home page
 app.get("/", (req, res) => {
@@ -37,12 +39,26 @@ app.get("/login", (req, res) => {
 //sign-in in website
 app.post("/signin", (req, res) => {
   let { email, password } = req.body;
-  let q = `SELECT password from posts where email="${email}";`;
+  let q = `SELECT password from users where email="${email}";`;
   try {
     connection.query(q, (err, result) => {
+      console.log(result[0].password);
       let pass = result[0].password;
-      if (pass == password) {
-        res.redirect("/users");
+      if (pass != password) {
+        res.status(404).send("Wrong Password");
+      } else {
+        let q1 = `SELECT username from users where email="${email}";`;
+        try {
+          connection.query(q1, (error, result1) => {
+            inn = true;
+            profile = result1[0].username;
+            res.redirect("/users");
+            if (error) throw error;
+          });
+        } catch (error) {
+          console.log(error);
+          res.send(error);
+        }
       }
       if (err) throw err;
     });
@@ -68,8 +84,7 @@ app.post("/signup", (req, res) => {
     console.log(err);
   }
 
-  let q2 = `create table ${username} (id varchar(50) primary key,contents VARCHAR(500) default NULL
-);`;
+  let q2 = `create table ${username} (id varchar(50) primary key,contents VARCHAR(500) default NULL);`;
   try {
     connection.query(q2, (err, result) => {
       console.log(result);
@@ -84,13 +99,22 @@ app.post("/signup", (req, res) => {
 app.get("/users", (req, res) => {
   let q = "SELECT * FROM users;";
   try {
-    connection.query(q, (err, result) => {
-      res.render("users.ejs", { result });
-      if (err) throw err;
-    });
+    if (inn) {
+      try {
+        connection.query(q, (err, result) => {
+          res.render("users.ejs", { result });
+          if (err) throw err;
+        });
+      } catch (err) {
+        console.log(err);
+        res.send(err);
+      }
+    } else {
+      res.render("404 Error : Page Not Found.");
+    }
   } catch (err) {
-    console.log(err);
-    res.send(err);
+    console.log("Error Occured in Show all users");
+    res.redirect("/");
   }
 });
 
@@ -99,24 +123,32 @@ app.get("/users/:id", (req, res) => {
   let { id } = req.params;
   let q1 = `SELECT username FROM users WHERE id = "${id}";`;
   try {
-    connection.query(q1, (err, result) => {
-      let tablename = result[0].username;
-      console.log(tablename);
-      let q2 = `SELECT * FROM ${tablename};`;
-      console.log("q2",tablename);
+    if (inn) {
       try {
-        connection.query(q2, (err, result1) => {
-          console.log(result1);
-          res.render("posts.ejs", { result1 });
-          if (err) throw err;
+        connection.query(q1, (err, result) => {
+          console.log(result[0].username);
+          let tablename = result[0].username;
+          console.log(tablename);
+          let q2 = `SELECT * FROM ${tablename};`;
+          console.log("q2", tablename);
+          try {
+            connection.query(q2, (err, result1) => {
+              console.log(result1);
+              res.render("posts.ejs", { result1 });
+              if (err) throw err;
+            });
+          } catch (err) {
+            console.log(err);
+          }
         });
       } catch (err) {
-        console.log(err);
+        console.log("Error Occured in all posts by user");
+        res.send("Error Occured in all posts by user");
       }
-    });
+    }
   } catch (err) {
-    console.log(err);
-    res.send(err);
+    console.log("Error Occured in all posts by user");
+    res.send("Error Occured in all posts by user");
   }
 });
 
@@ -135,19 +167,49 @@ app.get("/search", (req, res) => {
   res.render("search.ejs");
 });
 
-//search get by username
-app.get("/post", (req, res) => {
-  let { username } = req.query;
-  console.log(username);
-  let q = `SELECT content FROM posts WHERE username = "${username}"`;
-  try {
-    connection.query(q, (err, result) => {
-      if (err) throw err;
-      res.send("noooo");
-    });
-  } catch (err) {
-    console.log(err);
+app.get("/profile",(req,res)=>{
+  let q = `SELECT * FROM ${profile}`;
+  try{
+    if(inn){
+      try {
+        connection.query(q,(err,result)=>{
+          console.log(result);
+          res.render("profile.ejs",{result});
+          if(err) throw err;
+        })
+      } catch (err) {
+        
+      }
+    }
+  }catch(err){
+
   }
+})
+
+app.get("/contents",(req,res)=>{
+  res.render("newpostbyuser.ejs");
+})
+
+//search get by username
+app.post("/contents", (req, res) => {
+  let {contents} = req.body;
+  let q = `INSERT INTO ${profile} (id,contents) values ("${faker.string.uuid()}","${contents}"); `;
+  try {
+    if(inn){
+      try {
+        connection.query(q, (err, result) => {
+          console.log(result);
+          res.redirect("/profile");
+          if (err) throw err;
+        });
+      } catch (err) {
+        console.log("Error Generated by creating Post");
+      }
+    }
+  } catch (err) {
+    console.log("Error Generated by creating Post");
+  }
+  
 });
 
 //listening port

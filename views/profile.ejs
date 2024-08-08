@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROFILE | MERAMANN</title>
+</head>
+<body>
+    <div class="username">USERNAME</div>
+    <div class="posts">HERE ARE ALL YOUR POSTS
+        <!-- <h1>All Posts of </h1>  //solve this -->
+    <%try{ for (let i = 0;i<result.length;i++){%>
+      <div class="show">
+      <p><%=i+1%>. <%=result[i].contents;%> </p></form>
+      </div>
+      <hr>
+  <%} }catch(err){
+    console.log("No posts");
+  }%>
+  <form action="/contents">
+    <button type="submit" class="btn btn-outline-light ">CREATE POST</button>
+  </form>
+    </div>
+</body>
+</html>

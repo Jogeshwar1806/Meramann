@@ -7,7 +7,8 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    /><link rel="preconnect" href="https://fonts.googleapis.com" />
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
@@ -16,122 +17,88 @@
     <link rel="stylesheet" href="/Styles/loginstyles.css" />
   </head>
   <body>
-    <div class="main_box">
-      <input type="checkbox" id="check" />
-      <div class="btn_one">
-        <label for="check">
-          <i class="fa-solid fa-bars"></i>
-        </label>
-      </div>
-
-      <div class="sidebar_menu">
-        <div class="logo">
-          <a href="/">MERAMANN</a>
+    <header class="header-after">
+      <a href="/" class="logo">MeraMann</a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <form action="/login">
+        <button class="signin-btn" onclick="signIn()">Sign In</button>
+      </form>
+    </header>
+    <main>
+      <div class="container" id="container">
+        <div class="form-container sign-up">
+          <form method="post" action="/signup">
+            <h1>Create Accounts</h1>
+            <div class="social-icons">
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-google-plus-g"></i
+              ></a>
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+            <span> or use email for registration </span>
+            <input type="text" name="username" id="name" placeholder="Name" />
+            <input type="email" name="email" id="email" placeholder="Email" />
+            <input
+              type="password"
+              name="password"
+              id="pass"
+              placeholder="Password"
+            />
+            <button>Sign-Up</button>
+          </form>
         </div>
-
-        <div class="btn_two">
-          <label for="check">
-            <i class="fa-solid fa-xmark"></i>
-          </label>
+        <div class="form-container sign-in">
+          <form method="post" action="/signin">
+            <h1>Sign In</h1>
+            <div class="social-icons">
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-google-plus-g"></i
+              ></a>
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+              <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+              <a href="#" class="icon"
+                ><i class="fa-brands fa-linkedin-in"></i
+              ></a>
+            </div>
+            <span> or use email & password </span>
+            <input type="email" name="email" id="email" placeholder="Email" />
+            <input
+              type="password"
+              name="password"
+              id="pass"
+              placeholder="Password"
+            /><a href="/forget">Forgot Password ?</a>
+            <button>Sign-In</button>
+          </form>
         </div>
-
-        <div class="menu">
-          <ul>
-            <li>
-              <i class="fa-solid fa-image"></i>
-              <a href="/users">USERS</a>
-            </li>
-            <li>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <a href="/shortcuts">SHORTCUTS</a>
-            </li>
-            <li>
-              <i class="fa-solid fa-photo-film"></i>
-              <a href="/search">SEARCH</a>
-            </li>
-            <li>
-              <i class="fa-regular fa-heart"></i>
-              <a href="/liked">LIKED</a>
-            </li>
-            <li class="fixed-li">
-              <form action="/login"><i class="fa-solid fa-user-plus"></i><button class="libtn">Sign-In</button></form>
-            </li>
-          </ul>
-        </div>
-
-        <div class="social_media">
-          <ul>
-            <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="container" id="container">
-      <div class="form-container sign-up">
-        <form method="post" action="/signup">
-          <h1>Create Accounts</h1>
-          <div class="social-icons">
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-google-plus-g"></i
-            ></a>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-linkedin-in"></i
-            ></a>
-          </div>
-          <span> or use email for registration </span>
-          <input type="text" name="username" id="name" placeholder="Name" />
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <input type="password" name="password" id="pass" placeholder="Password" />
-          <button>Sign-Up</button>
-        </form>
-      </div>
-      <div class="form-container sign-in">
-        <form method="post" action="/signin">
-          <h1>Sign In</h1>
-          <div class="social-icons">
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-google-plus-g"></i
-            ></a>
-            <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-            <a href="#" class="icon"
-              ><i class="fa-brands fa-linkedin-in"></i
-            ></a>
-          </div>
-          <span> or use email & password </span>
-          <input type="email" name="email" id="email" placeholder="Email" />
-          <input
-            type="password"
-            name="password"
-            id="pass"
-            placeholder="Password"
-          /><a href="/forget">Forgot Password ?</a>
-          <button>Sign-In</button>
-        </form>
-      </div>
-      <div class="toggle-container">
-        <div class="toggle">
-          <div class="toggle-panel toggle-left">
-            <h1>Hello, Friend!</h1>
-            <p>
-              Register with Your Personal details to use all of site features
-            </p>
-            or
-            <button class="hidden" id="login">Sign In</button>
-          </div>
-          <div class="toggle-panel toggle-right">
-            <h1>Welcome Back !</h1>
-            <p>Enter Your Personal details to use all of site features</p>or
-            <button class="hidden" id="register">Sign Up</button>
+        <div class="toggle-container">
+          <div class="toggle">
+            <div class="toggle-panel toggle-left">
+              <h1>Hello, Friend!</h1>
+              <p>
+                Register with Your Personal details to use all of site features
+              </p>
+              or
+              <button class="hidden" id="login">Sign In</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+              <h1>Welcome Back !</h1>
+              <p>Enter Your Personal details to use all of site features</p>
+              or
+              <button class="hidden" id="register">Sign Up</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <script src="scripts/app.js"></script>
   </body>
 </html>

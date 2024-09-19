@@ -157,9 +157,7 @@ app.get("/users/:id", (req, res) => {
 //forget password page
 app.get("/forget", (req, res) => {
   try{
-    if(inn){
       res.render("forget.ejs");
-    }
   }catch(err){
     res.redirect("/");
     console.log("Error in search page.");

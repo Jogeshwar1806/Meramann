@@ -15,72 +15,39 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet" href="styles/homestyles.css">
+    <link rel="stylesheet" href="styles/homestyles.css" />
   </head>
   <body>
-    <div class="main_box">
-      <input type="checkbox" id="check" />
-      <div class="btn_one">
-        <label for="check">
-          <i class="fa-solid fa-bars"></i>
-        </label>
+    <header class="header-after">
+      <a href="#" class="logo">MeraMann</a>
+      <i class="bx bx-menu" id="menu-icon"></i>
+      <form action="/login">
+        <button class="signin-btn" onclick="signIn()">Sign In</button>
+      </form>
+      <nav class="navbar">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+      </nav>
+    </header>
+    <header class="header-before">
+      <div class="logo"><a href="#" class="logo">MeraMann</a></div>
+      <form action="/login" method="get">
+        <button class="signin-btn">Sign In</button>
+      </form>
+    </header>
+    <main>
+      <div class="hero">
+        <h1>Connect, Share, and Explore</h1>
+        <p>Join our community and discover new connections today.</p>
+        <form action="/login">
+          <button class="cta-btn">Join Now</button>
+        </form>
       </div>
-
-      <div class="sidebar_menu">
-        <div class="logo">
-          <form action="/">
-          <a href="/">MERAMANN</a>
-          <button></button>
-          </form>
-        </div>
-
-        <div class="btn_two">
-          <label for="check">
-            <i class="fa-solid fa-xmark"></i>
-          </label>
-        </div>
-
-        <div class="menu">
-          <ul>
-            <li>
-              <i class="fa-solid fa-image"></i>
-              <a href="/users">USERS</a>
-            </li>
-            <li>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <a href="/shortcuts">SHORTCUTS</a>
-            </li>
-            <li>
-              <i class="fa-solid fa-photo-film"></i>
-              <a href="/search">SEARCH</a>
-            </li>
-            <li>
-              <i class="fa-regular fa-heart"></i>
-              <a href="/liked">LIKED</a>
-            </li>
-            <li>
-              <i class="fa-solid fa-phone"></i>
-              <a href="/profile">PROFILE</a>
-            </li>
-            <!-- <li>
-              <i class="fa-regular fa-comments"></i>
-              <a href="/feedback">FEEDBACK</a>
-            </li> -->
-            <li>
-              <form action="/login"><i class="fa-solid fa-user-plus"></i><button class="libtn">Sign-In</button></form>
-            </li>
-          </ul>
-        </div>
-
-        <div class="social_media">
-          <ul>
-            <a href="#"><i class="fa-brands fa-facebook"></i></i></a>
-            <a href="#"><i class="fa-brands fa-twitter"></i></a>
-            <a href="#"><i class="fa-brands fa-instagram"></i></i></a>
-            <a href="#"><i class="fa-brands fa-youtube"></i></a>
-          </ul>
-        </div>
-      </div>
-    </div>
+    </main>
+    <div class="nav-bg"></div>
+    <script src="app.js"></script>
   </body>
 </html>
